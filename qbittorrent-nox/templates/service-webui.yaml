@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "qbittorrent-nox.fullname" . }}-webui
+  labels:
+    {{- include "qbittorrent-nox.labels" . | nindent 4 }}-webui
+spec:
+  type: {{ .Values.serviceWebUI.type }}
+  ports:
+  - port: {{ .Values.serviceWebUI.port }}
+    targetPort: webui
+    protocol: TCP
+    name: webui
+  selector:
+    {{- include "qbittorrent-nox.selectorLabels" . | nindent 4 }}

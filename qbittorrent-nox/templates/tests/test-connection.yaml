@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "qbittorrent-nox.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "qbittorrent-nox.fullname" . }}:{{ .Values.serviceWebUI.port }}']
   restartPolicy: Never

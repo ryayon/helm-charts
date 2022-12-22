@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "qbittorrent-nox.fullname" . }}-bt-listener
+  labels:
+    {{- include "qbittorrent-nox.labels" . | nindent 4 }}-bt-listener
+spec:
+  type: {{ .Values.serviceBTListener.type }}
+  ports:
+  ### Session\Port=30000
+  - name: bt-listener
+    port: {{ .Values.serviceBTListener.port }}
+    targetPort: {{ .Values.serviceBTListener.port }}
+    nodePort: {{ .Values.serviceBTListener.port }}
+    protocol: TCP
+  selector:
+    {{- include "qbittorrent-nox.selectorLabels" . | nindent 4 }}
+  type: LoadBalancer

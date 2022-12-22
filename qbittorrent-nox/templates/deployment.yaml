@@ -5,6 +5,8 @@ metadata:
   labels:
     {{- include "qbittorrent-nox.labels" . | nindent 4 }}
 spec:
+  strategy:
+    type: Recreate
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
@@ -28,25 +30,51 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+      - name: {{ .Chart.Name }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command:
+        - qbittorrent-nox
+        ports:
+        - name: webui
+          containerPort: {{ .Values.serviceWebUI.port }}
+          protocol: TCP
+        - name: bt-listener
+          containerPort: {{ .Values.serviceBTListener.port }}
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+        resources:
+          {{- toYaml .Values.resources | nindent 12 }}
+        volumeMounts:
+        - name: config
+          mountPath: /root/.config/qBittorrent/qBittorrent.conf
+          subPath: qBittorrent.conf
+        #- name: downloads
+        #  mountPath: /Downloads
+        #  subPath: qbittorrent-downloads
+        #- name: downloads
+        #  mountPath: /root/.local/share/qBittorrent/BT_backup
+        #  subPath: qbittorrent-torrents
+      volumes:
+      - name: config
+        configMap:
+          name: {{ include "qbittorrent-nox.fullname" . }}
+          items:
+          - key: qBittorrent.conf
+            path: qBittorrent.conf
+      #- name: downloads
+      #  persistentVolumeClaim:
+      #    claimName: qbittorrent-downloads
+      #    #readOnly: true
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: ryayon/qbittorrent-nox
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -13,6 +13,19 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+configuration: |
+  [BitTorrent]
+  Session\DefaultSavePath=/Downloads
+  Session\Encryption=1
+  Session\Port=30000
+  
+  [LegalNotice]
+  Accepted=true
+
+  [Preferences]
+  General\Locale=
+  WebUI\Port=8080
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -36,9 +49,17 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-service:
+serviceWebUI:
   type: ClusterIP
-  port: 80
+  ### Must be the same port number as 'WebUI\Port' in qBittorrent.conf
+  ### 8080 is default port as for 'WebUI\Port=8080'
+  port: 8080
+
+serviceBTListener:
+  type: LoadBalancer
+  ### Must be the same port number as 'Session\Port' in qBittorrent.conf
+  ### 30000 is default port as for 'Session\Port=30000'
+  port: 30000
 
 ingress:
   enabled: false
