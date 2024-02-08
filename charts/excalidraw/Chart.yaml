@@ -1,0 +1,11 @@
+apiVersion: v2
+name: excalidraw
+version: 0.1.0
+appVersion: "1.16.0"
+description: A Helm chart for Excalidraw, a virtual whiteboard for sketching hand-drawn like diagrams
+home: https://excalidraw.com
+icon: https://docs.excalidraw.com/img/favicon.png
+kubeVersion: ^1.27.0-0
+maintainers:
+  - name: ryayon
+    email: ryayon@outlook.com
