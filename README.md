@@ -10,8 +10,8 @@ Add this repository to Helm.
 helm repo add examples https://ryayon.github.io/helm-charts
 ```
 
-Install [excalidraw](https://excalidraw.com).
+Install [qbittorrent-nox](https://www.qbittorrent.org/
 
 ```shell
-helm install excalidraw helm-charts/excalidraw
+helm install qbittorrent-nox helm-charts/qbittorrent-nox
 ```

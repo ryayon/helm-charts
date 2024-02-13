@@ -1,38 +1,5 @@
 apiVersion: v1
 entries:
-  excalidraw:
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2024-02-08T13:57:37.353711141Z"
-    description: A Helm chart for Excalidraw, a virtual whiteboard for sketching hand-drawn
-      like diagrams
-    digest: 0d46bb87a62e44a3f9502238c2596563d91d0408ce40dd2e903cfa543ddc5630
-    home: https://excalidraw.com
-    icon: https://docs.excalidraw.com/img/favicon.png
-    kubeVersion: ^1.27.0-0
-    maintainers:
-    - email: ryayon@outlook.com
-      name: ryayon
-    name: excalidraw
-    urls:
-    - https://github.com/ryayon/helm-charts/releases/download/excalidraw-0.1.0/excalidraw-0.1.0.tgz
-    version: 0.1.0
-  qbitorrent:
-  - apiVersion: v2
-    appVersion: 4.6.3
-    created: "2024-02-13T14:28:05.062113222Z"
-    description: A Helm chart for qbitorrent, a free and reliable P2P Bittorrent client
-    digest: 47c45e613bd19857a69b6adef82f7fd31c9d55614dec0a21f0078ed9c87231e0
-    home: https://www.qbittorrent.org
-    icon: https://www.qbittorrent.org/favicon.svg
-    kubeVersion: ^1.27.0-0
-    maintainers:
-    - email: ryayon@outlook.com
-      name: ryayon
-    name: qbitorrent
-    urls:
-    - qbitorrent-0.1.0.tgz
-    version: 0.1.0
   qbittorrent:
   - apiVersion: v2
     appVersion: 4.6.3
