@@ -1,0 +1,11 @@
+apiVersion: v2
+name: qbittorrent
+version: 0.1.0
+appVersion: "4.6.3"
+description: A Helm chart for qbittorrent-nox, a free and reliable P2P Bittorrent client
+home: https://www.qbittorrent.org
+icon: https://www.qbittorrent.org/favicon.svg
+kubeVersion: ^1.27.0-0
+maintainers:
+  - name: ryayon
+    email: ryayon@outlook.com

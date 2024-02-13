@@ -1,8 +1,8 @@
-# Default values for excalidraw.
+# Default values for qbittorrent-nox.
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: ryayon/qbittorrent-nox
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""

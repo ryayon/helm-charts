@@ -12,4 +12,4 @@ Entries should include a reference to the Pull Request that introduced the chang
 
 ## 0.1.0
 
-* [FEATURE] Initial commit, `excalidraw` not yet implemented
+* [FEATURE] Initial commit, `qbittorrent-nox` image added
