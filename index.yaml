@@ -33,4 +33,20 @@ entries:
     urls:
     - qbitorrent-0.1.0.tgz
     version: 0.1.0
-generated: "2024-02-13T14:28:05.062120284Z"
+  qbittorrent:
+  - apiVersion: v2
+    appVersion: 4.6.3
+    created: "2024-02-13T14:33:03.672711954Z"
+    description: A Helm chart for qbitorrent, a free and reliable P2P Bittorrent client
+    digest: 4bb321051a1e0d860500e96fb4d4a7364c5ea4ad37289a589515111a7b1a76ef
+    home: https://www.qbittorrent.org
+    icon: https://www.qbittorrent.org/favicon.svg
+    kubeVersion: ^1.27.0-0
+    maintainers:
+    - email: ryayon@outlook.com
+      name: ryayon
+    name: qbittorrent
+    urls:
+    - qbittorrent-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-02-13T14:33:03.672746058Z"
